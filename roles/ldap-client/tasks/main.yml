@@ -1,0 +1,11 @@
+---
+- include: yum.yml
+- include: hosts.yml
+- include: ldap.conf.yml
+- include: sshd_config.yml
+- include: authconfig.yml
+- include: sudo-ldap.yml
+- include: nsswitch.yml
+- include: nslcd.yml
+- include: pam.d.su.yml
+- include: systemctl.yml

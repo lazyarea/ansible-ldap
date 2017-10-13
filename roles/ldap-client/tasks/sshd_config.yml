@@ -1,0 +1,28 @@
+- debug: msg="sshd_config"
+
+- command: mkdir -p /var/log/slapd/
+
+- shell: ls /etc/ssh/sshd_config.org
+  register: sshd_conf_exists
+  ignore_errors: True
+
+
+- copy: src=/etc/ssh/sshd_config  dest=/etc/ssh/sshd_config.org
+  when: sshd_conf_exists|failed
+
+
+- shell: grep -e ^AuthorizedKeysCommand\   /etc/ssh/sshd_config
+  register: ptn0
+  ignore_errors: True
+
+- lineinfile: dest=/etc/ssh/sshd_config regexp="^\#AuthorizedKeysCommand\ " insertafter="#AuthorizedKeysCommand " line="AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper"
+  when: ptn0|failed
+
+- shell: grep -e ^AuthorizedKeysCommand\   /etc/ssh/sshd_config
+  register: ptn1
+  ignore_errors: True
+
+- lineinfile: dest=/etc/ssh/sshd_config regexp="^\#AuthorizedKeysCommandUser" insertafter="#AuthorizedKeysCommandUser" line="AuthorizedKeysCommandUser root"
+  when: ptn1|failed
+
+- command: systemctl restart sshd

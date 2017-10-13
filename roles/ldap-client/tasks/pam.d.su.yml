@@ -1,0 +1,9 @@
+- shell:  grep -e "^auth\s*required\s*pam" /etc/pam.d/su
+  register: pam_d_su_exists
+  ignore_errors: True
+
+- lineinfile:
+    dest=/etc/pam.d/su
+    insertafter=EOF
+    line="auth    required    pam_wheel.so use_uid"
+  when: pam_d_su_exists|failed

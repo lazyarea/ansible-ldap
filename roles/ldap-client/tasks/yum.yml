@@ -1,0 +1,9 @@
+#--
+#- debug: msg="gcc is not. NG"
+- name: install openssh-ldap openldap-clients nss-pam-ldapd
+  yum: name={{ item }} state=present
+  with_items:
+  - openldap-clients
+  - openssh-ldap
+  - nss-pam-ldapd
+  - pam_ldap

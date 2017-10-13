@@ -1,0 +1,19 @@
+- debug: msg="/etc/sudo-ldap.conf"
+
+
+# - name: "replace etc/sudo-ldap.conf"
+- copy: src=etc/sudo-ldap.conf dest=/etc/
+- replace:
+    path: /etc/sudo-ldap.conf
+    regexp: '\{\{domain\}\}'
+    replace: '{{domain}}'
+
+- replace:
+    path: /etc/sudo-ldap.conf
+    regexp: '\{\{tld\}\}'
+    replace: '{{tld}}'
+
+- replace:
+    path: /etc/sudo-ldap.conf
+    regexp: '\{\{bindpw\}\}'
+    replace: '{{bindpw}}'

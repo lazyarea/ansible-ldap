@@ -1,0 +1,4 @@
+- debug: msg="/etc/nsswitch.conf"
+# - shell: /etc/nsswitch.conf /etc/nsswitch.conf.org
+- lineinfile: dest=/etc/nsswitch.conf  insertafter="EOF" line="sudoers{{':'}}    files ldap"
+# - shell: echo "sudoer: files ldap" >> /etc/nsswitch.conf

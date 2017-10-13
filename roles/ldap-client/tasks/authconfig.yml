@@ -1,0 +1,2 @@
+- debug: msg="authconfig"
+- command: authconfig --enableldap --enableldapauth --ldapserver=ldap.{{domain}}.{{tld}} --ldapbasedn="dc={{domain}},dc={{tld}}" --enablemkhomedir --update

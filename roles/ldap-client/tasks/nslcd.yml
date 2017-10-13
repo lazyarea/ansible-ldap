@@ -1,0 +1,8 @@
+- command: cp /etc/nslcd.conf /etc/nslcd.conf.org
+- lineinfile:
+    dest=/etc/nslcd.conf
+    regexp="^\#base   group  ou=Groups,dc="
+    insertafter="#base   group  ou=Groups,dc="
+    line="base   group  ou=Groups,dc={{domain}},dc={{tld}}"
+
+# base   group  ou=Group,dc=example,dc=com

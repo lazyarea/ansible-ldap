@@ -1,0 +1,5 @@
+- debug: msg="/etc/ssh/ldap.conf"
+
+- shell: cp -p /etc/openldap/ldap.conf{,.org}
+- command: ln -s /etc/openldap/ldap.conf /etc/ssh/
+  ignore_errors: True
