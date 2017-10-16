@@ -3,3 +3,13 @@
 - shell: cp -p /etc/openldap/ldap.conf{,.org}
 - command: ln -s /etc/openldap/ldap.conf /etc/ssh/
   ignore_errors: True
+
+- shell:  grep -e "^ssl\s*no$" /etc/ssh/ldap.conf
+  register: ssl_no_exists
+  ignore_errors: True
+
+- lineinfile:
+    dest=/etc/ssh/ldap.conf
+    insertafter=EOF
+    line="ssl no"
+  when: ssl_no_exists|failed
