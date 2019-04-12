@@ -11,6 +11,13 @@
     SASL SSF: 0
     modifying entry "olcDatabase={0}config,cn=config"
 
+##### add other
+```# ldapadd -Y EXTERNAL -H ldapi:// -f  /usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-openldap.ldif```
+    SASL/EXTERNAL authentication started
+    SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+    SASL SSF: 0
+    adding new entry "cn=openssh-lpk,cn=schema,cn=config"
+
 ##### change doamin
   ```# ldapmodify -x -D cn=config -w secret -f LDIF/chdomain.ldif```
 
