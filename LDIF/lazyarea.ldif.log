@@ -1,0 +1,119 @@
+version: 1
+
+#!RESULT OK
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.394
+dn: dc=lazyarea,dc=com
+objectClass: organization
+objectClass: dcObject
+dc: lazyarea
+o: lazyarea Inc.
+
+#!RESULT OK
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.406
+dn: cn=Manager,dc=lazyarea,dc=com
+objectClass: organizationalRole
+cn: Manager
+
+#!RESULT OK
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.417
+dn: ou=People,dc=lazyarea,dc=com
+objectClass: organizationalUnit
+ou: People
+
+#!RESULT OK
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.425
+dn: ou=Group,dc=lazyarea,dc=com
+objectClass: organizationalUnit
+ou: Group
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.429
+#!ERROR [LDAP: error code 17 - memberUid: attribute type undefined]
+dn: cn=development,ou=Group,dc=lazyarea,dc=com
+objectClass: top
+objectClass: posixGroup
+cn: development
+gidNumber: 10000
+memberUid: lazyarea
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.432
+#!ERROR [LDAP: error code 17 - memberUid: attribute type undefined]
+dn: cn=wheel,ou=Group,dc=lazyarea,dc=com
+objectClass: top
+objectClass: posixGroup
+cn: wheel
+gidNumber: 99999
+memberUid: lazyarea
+
+#!RESULT OK
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.436
+dn: ou=SUDOers,dc=lazyarea,dc=com
+objectClass: organizationalUnit
+ou: SUDOers
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.439
+#!ERROR [LDAP: error code 17 - sudoOption: attribute type undefined]
+dn: cn=defaults,ou=SUDOers,dc=lazyarea,dc=com
+objectClass: sudoRole
+objectClass: top
+cn: defaults
+sudoOption: !root_sudo
+sudoOption: !lecture
+sudoOption: log_host
+sudoOption: log_year
+sudoOption: syslog=local3
+sudoOption: logfile=/var/log/slapd/sudo.log
+sudoOption: ignore_dot
+sudoOption: ignore_local_sudoers
+sudoOption: timestamp_timeout=0
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.445
+#!ERROR [LDAP: error code 17 - sudoHost: attribute type undefined]
+dn: cn=%wheel,ou=SUDOers,dc=lazyarea,dc=com
+objectClass: sudoRole
+objectClass: top
+cn: %wheel
+sudoCommand: ALL
+sudoHost: ALL
+sudoUser: %wheel
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.449
+#!ERROR [LDAP: error code 17 - homeDirectory: attribute type undefined]
+dn: cn=lazyarea,ou=People,dc=lazyarea,dc=com
+objectClass: posixAccount
+objectClass: sudoRole
+cn: lazyarea
+gidNumber: 10000
+homeDirectory: /home/lazyarea
+uid: lazyarea
+uidNumber: 10000
+loginShell: /bin/bash
+
+#!RESULT ERROR
+#!CONNECTION ldap://192.168.33.100:389
+#!DATE 2019-04-13T03:13:33.455
+#!ERROR [LDAP: error code 17 - homeDirectory: attribute type undefined]
+dn: cn=vagrant,ou=People,dc=lazyarea,dc=com
+objectClass: posixAccount
+objectClass: sudoRole
+cn: vagrant
+gidNumber: 10000
+homeDirectory: /home/lazyarea
+uid: lazyarea
+uidNumber: 10000
+loginShell: /bin/bash
+userPassword:: e1NIQX1zRC9waVBqVlc0ZmIwaUkrNGFpamVnK0lMVzQ9

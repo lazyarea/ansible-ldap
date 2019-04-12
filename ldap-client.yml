@@ -1,7 +1,0 @@
----
-- hosts: addnew
-#  connection: local
-  sudo: yes
-  sudo_user: root
-  roles:
-    - ldap-client

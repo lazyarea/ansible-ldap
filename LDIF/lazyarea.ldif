@@ -4,7 +4,7 @@ dn: dc=lazyarea,dc=com
 objectClass: organization
 objectClass: dcObject
 dc: lazyarea
-o: lazyarea  Corporation
+o: lazyarea Inc.
 
 dn: cn=Manager,dc=lazyarea,dc=com
 objectClass: organizationalRole
@@ -78,4 +78,3 @@ uid: lazyarea
 uidNumber: 10000
 loginShell: /bin/bash
 userPassword:: e1NIQX1zRC9waVBqVlc0ZmIwaUkrNGFpamVnK0lMVzQ9
-

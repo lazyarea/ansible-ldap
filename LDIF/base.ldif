@@ -1,0 +1,13 @@
+dn: dc=lazyarea,dc=com
+objectClass: dcObject
+objectClass: organization
+dc: lazyarea
+o: lazyarea Inc.
+
+dn: ou=People,dc=lazyarea,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=lazyarea,dc=com
+objectClass: organizationalUnit
+ou: Group
